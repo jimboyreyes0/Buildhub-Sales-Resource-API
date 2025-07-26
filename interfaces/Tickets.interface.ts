@@ -1,15 +1,15 @@
 export default interface ITickets {
-  ID: number;
-  Title: Text;
-  Description: Text;
+  ID: bigint;
+  Title: string;
+  Description: string;
   Priority: string;
   ExpectedStartDate: Date;
   ExpectedEndDate: Date;
   LeadTime: string;
   ActualStartDate: Date;
   ActualEndDate: Date;
-  Assignee: number;
-  Reporter: number;
+  Assignee: bigint;
+  Reporter: bigint;
   TicketStatus: string;
   Status: boolean;
 }

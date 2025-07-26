@@ -9,6 +9,7 @@ import {
 } from "sequelize-typescript";
 import dbConnection from "../connection/db";
 import ITickets from "../interfaces/Tickets.interface";
+import Users from "./Users.model";
 
 @Table({
   timestamps: true,
@@ -27,13 +28,13 @@ export class Tickets extends Model<ITickets> {
     type: DataType.TEXT,
     allowNull: false,
   })
-  Title!: Text;
+  Title!: string;
 
   @Column({
     type: DataType.TEXT,
     allowNull: true,
   })
-  Description!: Text;
+  Description!: string;
 
   @Column({
     type: DataType.STRING,
@@ -97,5 +98,17 @@ export class Tickets extends Model<ITickets> {
 }
 
 dbConnection.addModels([Tickets]);
+
+Tickets.belongsTo(Users, {
+  foreignKey: "Assignee",
+  targetKey: "ID",
+  as: "_Assignee"
+})
+
+Tickets.belongsTo(Users, {
+  foreignKey: "Reporter",
+  targetKey: "ID",
+  as: "_Reporter"
+})
 
 export default Tickets;

@@ -1,7 +1,7 @@
 import { AutoMap } from "@automapper/classes";
-import { RoleDTO } from "../dto/role/role.dto";
+import { RoleDTO } from "../role/role.dto";
 
-export class UserEntity {
+export class SafeUserResponseDTO {
   @AutoMap()
   ID!: bigint;
   @AutoMap()
@@ -9,15 +9,9 @@ export class UserEntity {
   @AutoMap()
   LastName!: string;
   @AutoMap()
-  EmailAddress!: string;
-  @AutoMap()
   Role!: number;
   @AutoMap(() => RoleDTO)
   _Role?: RoleDTO;
-  @AutoMap()
-  Username!: string;
-  @AutoMap()
-  Password!: string;
   @AutoMap()
   Status!: boolean;
 }

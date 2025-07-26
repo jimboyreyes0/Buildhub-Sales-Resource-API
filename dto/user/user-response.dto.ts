@@ -1,4 +1,5 @@
 import { AutoMap } from "@automapper/classes";
+import { RoleDTO } from "../role/role.dto";
 
 export class UserResponseDTO {
   @AutoMap()
@@ -11,6 +12,8 @@ export class UserResponseDTO {
   EmailAddress!: string;
   @AutoMap()
   Role!: number;
+  @AutoMap(() => RoleDTO)
+  _Role?: RoleDTO;
   @AutoMap()
   Username!: string;
   @AutoMap()

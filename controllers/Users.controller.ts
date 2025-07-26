@@ -9,7 +9,6 @@ import { mapper } from "../mappings/mapper";
 import { CreateUserDTO } from "../dto/user/create-user.dto";
 import { UpdateUserDTO } from "../dto/user/update-user.dto";
 import { UserResponseDTO } from "../dto/user/user-response.dto";
-import { validate } from "class-validator";
 import { plainToInstance } from "class-transformer";
 import { BadRequestException } from "../exceptions/http.exception";
 import { LoginUserDTO } from "../dto/user/login-user.dto";
@@ -21,7 +20,7 @@ export default class UsersController {
     async (req: Request, res: Response, next: NextFunction) => {
       const dto = plainToInstance(LoginUserDTO, req.body);
       await validateSchema(dto);
-      const userEntity = mapper.map(req.body, LoginUserDTO, UserEntity);
+      const userEntity = mapper.map(dto, LoginUserDTO, UserEntity);
       const userLogin = await this.userService.login(userEntity);
 
       if (!userLogin)
@@ -58,7 +57,7 @@ export default class UsersController {
       const dto = plainToInstance(CreateUserDTO, req.body);
       await validateSchema(dto);
 
-      const userEntity = mapper.map(req.body, CreateUserDTO, UserEntity);
+      const userEntity = mapper.map(dto, CreateUserDTO, UserEntity);
       const createdUser = await this.userService.create(userEntity);
 
       if (!createdUser)
@@ -81,7 +80,7 @@ export default class UsersController {
       const dto = plainToInstance(UpdateUserDTO, req.body);
       await validateSchema(dto);
 
-      const userEntity = mapper.map(req.body, UpdateUserDTO, UserEntity);
+      const userEntity = mapper.map(dto, UpdateUserDTO, UserEntity);
       const updateUser = await this.userService.update(id, userEntity);
       if (!updateUser) throw new BadRequestException("Invalid user.");
       const user = new UserEntity();
