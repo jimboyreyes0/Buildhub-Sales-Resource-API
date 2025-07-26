@@ -1,5 +1,5 @@
 export interface IUsers {
-  ID?: number;
+  ID?: bigint;
   FirstName: string;
   LastName: string;
   EmailAddress: string;

@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@automapper/classes": "^8.8.1",
+    "@automapper/core": "^8.8.1",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
@@ -8,6 +10,8 @@
     "@types/passport": "^1.0.17",
     "@types/passport-local": "^1.0.38",
     "@types/uuid": "^10.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
     "date-fns": "^4.1.0",
     "dotenv": "^17.2.0",
     "express": "^5.1.0",
@@ -30,13 +34,12 @@
   "name": "ticketing-system-api",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
     "start": "node dist/app.js",
-    "dev": "nodemon src/app.ts",
-    "dev2": "npx ts-node-dev --files ./src/app.ts"
+    "dev": "nodemon app.ts",
+    "dev2": "npx ts-node-dev --files app.ts"
   },
   "author": "",
   "license": "ISC",

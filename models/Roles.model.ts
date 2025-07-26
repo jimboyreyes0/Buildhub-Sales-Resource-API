@@ -9,6 +9,7 @@ import {
 } from "sequelize-typescript";
 import dbConnection from "../connection/db";
 import IRoles from "../interfaces/Roles.interface";
+import Users from "./Users.model";
 
 @Table({
   timestamps: true,
@@ -19,7 +20,7 @@ export class Roles extends Model<IRoles> {
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
-    autoIncrement: true
+    autoIncrement: true,
   })
   ID!: number;
 
@@ -34,7 +35,6 @@ export class Roles extends Model<IRoles> {
   })
   Status!: boolean;
 }
-
 async function seedEmployeeRoles() {
   try {
     const existingRoles = await Roles.findAll();
@@ -61,9 +61,20 @@ async function seedEmployeeRoles() {
     console.error("Error seeding employee roles:", error);
   }
 }
+dbConnection.addModels([Roles]);
+
+Users.belongsTo(Roles, {
+  foreignKey: "Role",
+  targetKey: "ID",
+  as: "_Role",
+});
+
+Roles.hasMany(Users, {
+  foreignKey: "Role",
+  sourceKey: "ID",
+  as: "Users",
+});
 
 seedEmployeeRoles();
-
-dbConnection.addModels([Roles]);
 
 export default Roles;

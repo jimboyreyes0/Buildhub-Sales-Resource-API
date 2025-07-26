@@ -9,6 +9,7 @@ import {
 } from "sequelize-typescript";
 import dbConnection from "../connection/db";
 import { IUsers } from "../interfaces/Users.interface";
+import Roles from "./Roles.model";
 
 @Table({
   timestamps: true,
@@ -76,7 +77,7 @@ async function seedUsers() {
 
     const users = [
       {
-        ID: 1,
+        ID: BigInt(1),
         FirstName: "Admin",
         LastName: "User",
         EmailAddress: "admin@buildhub.ph",
@@ -94,8 +95,10 @@ async function seedUsers() {
   }
 }
 
-seedUsers();
-
 dbConnection.addModels([Users]);
+
+
+
+seedUsers();
 
 export default Users;
