@@ -1,6 +1,7 @@
 import { AutoMap } from "@automapper/classes";
 import { UserResponseDTO } from "../user/user-response.dto";
 import { SafeUserResponseDTO } from "../user/safe-user-response.dto";
+import { ApprovalResponseDTO } from "../approval/approval-response.dto";
 
 export class TicketResponseDto {
   @AutoMap()
@@ -41,6 +42,9 @@ export class TicketResponseDto {
 
   @AutoMap(() => SafeUserResponseDTO)
   _Assignee?: SafeUserResponseDTO;
+
+  @AutoMap(() => ApprovalResponseDTO)
+  _Approvals?: ApprovalResponseDTO;
 
   @AutoMap()
   createdAt!: Date;

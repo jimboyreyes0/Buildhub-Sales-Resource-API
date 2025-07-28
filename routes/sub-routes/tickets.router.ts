@@ -8,5 +8,15 @@ const ticketsController = new TicketsController();
 router.post("/", verifyToken, ticketsController.createTicket);
 router.get("/", ticketsController.getAllTickets);
 router.get("/:id", ticketsController.getTicketById);
+router.get(
+  "/approval/list",
+  verifyToken,
+  ticketsController.getForApprovalTickets
+);
+router.post(
+  "/approval/decision",
+  verifyToken,
+  ticketsController.approveRejectTicket
+);
 
 export default router;

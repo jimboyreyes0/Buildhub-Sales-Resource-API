@@ -20,7 +20,7 @@ export class Tickets extends Model<ITickets> {
   @Column({
     type: DataType.BIGINT,
     allowNull: false,
-    autoIncrement: true
+    autoIncrement: true,
   })
   ID!: bigint;
 
@@ -95,6 +95,18 @@ export class Tickets extends Model<ITickets> {
     allowNull: false,
   })
   Status!: boolean;
+
+  @Column({
+    type: DataType.DATE,
+    allowNull: true,
+  })
+  createdAt!: Date;
+
+  @Column({
+    type: DataType.DATE,
+    allowNull: true,
+  })
+  updatedAt!: Date;
 }
 
 dbConnection.addModels([Tickets]);
@@ -102,13 +114,13 @@ dbConnection.addModels([Tickets]);
 Tickets.belongsTo(Users, {
   foreignKey: "Assignee",
   targetKey: "ID",
-  as: "_Assignee"
-})
+  as: "_Assignee",
+});
 
 Tickets.belongsTo(Users, {
   foreignKey: "Reporter",
   targetKey: "ID",
-  as: "_Reporter"
-})
+  as: "_Reporter",
+});
 
 export default Tickets;

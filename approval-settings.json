@@ -1,0 +1,18 @@
+{
+  "approvalWorkflow": {
+    "levels": [
+      {
+        "level": 1,
+        "approvers": [{ "ID": 2 }, { "ID": 4 }]
+      },
+      {
+        "level": 2,
+        "approvers": [{ "ID": 7 }, { "ID": 3 }, { "ID": 5 }]
+      },
+      {
+        "level": 3,
+        "approvers": [{ "ID": 6 }]
+      }
+    ]
+  }
+}
