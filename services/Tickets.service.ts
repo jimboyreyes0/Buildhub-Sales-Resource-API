@@ -204,16 +204,18 @@ export default class TicketsService {
       (a) =>
         a.ApprovalType === `level-${finalLevel}` && a.ApprovalStatus === true
     );
+
     if (isFullyApproved) return null;
 
-    await Tickets.update(
-      {
-        LeadTime,
-        ActualStartDate,
-        ActualEndDate,
-      },
-      { where: { ID: TicketID } }
-    );
+    let ticketUpdate: any = {
+      LeadTime,
+      ActualStartDate,
+      ActualEndDate,
+    };
+    if (finalLevel === usersApprovalLevel) {
+      ticketUpdate.TicketStatus = "Approved";
+    }
+    await Tickets.update(ticketUpdate, { where: { ID: TicketID } });
 
     await Approvals.create({
       TicketID,
