@@ -19,6 +19,8 @@ export class TicketEntity {
   @AutoMap()
   LeadTime!: string;
   @AutoMap()
+  Category!: string;
+  @AutoMap()
   ActualStartDate!: Date;
   @AutoMap()
   ActualEndDate!: Date;

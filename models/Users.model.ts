@@ -83,7 +83,7 @@ async function seedUsers() {
         EmailAddress: "admin@buildhub.ph",
         Role: 6,
         Username: "admin",
-        Password: "admin",
+        Password: "123456789",
         Status: true,
       },
     ];

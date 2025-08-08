@@ -26,6 +26,9 @@ export class TicketResponseDto {
   LeadTime?: string;
 
   @AutoMap()
+  Category?: string;
+
+  @AutoMap()
   ActualStartDate?: Date;
 
   @AutoMap()

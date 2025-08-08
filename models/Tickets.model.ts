@@ -61,6 +61,12 @@ export class Tickets extends Model<ITickets> {
   LeadTime!: string;
 
   @Column({
+    type: DataType.STRING,
+    allowNull: true,
+  })
+  Category!: string;
+
+  @Column({
     type: DataType.DATE,
     allowNull: true,
   })

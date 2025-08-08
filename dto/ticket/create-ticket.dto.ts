@@ -48,6 +48,11 @@ export class CreateTicketDto {
   LeadTime?: string;
 
   @AutoMap()
+  @IsString()
+  @IsOptional()
+  Category?: string;
+
+  @AutoMap()
   @IsDate()
   @IsOptional()
   ActualStartDate?: Date;

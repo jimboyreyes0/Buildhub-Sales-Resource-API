@@ -6,6 +6,7 @@ export default interface ITickets {
   ExpectedStartDate: Date;
   ExpectedEndDate: Date;
   LeadTime: string;
+  Category: string;
   ActualStartDate: Date;
   ActualEndDate: Date;
   Assignee: bigint;
